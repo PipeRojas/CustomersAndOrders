@@ -23,16 +23,16 @@ Este se puede usar así:
 | :------ | :----- | :---------- | :-------- | :------ |
 | `/customer/{customerId}/orden` | **POST** | Guarda una nueva orden para el cliente con id customerId. | | **Orden** |
 | `/customer/{customerId}/orden/details` | **POST** | Guarda los detalles de una orden | **Long** customerId | **List**<**OrdenDetail**> |
-| `/customer/{customerId}/orden` | **GET** | Retorna las ordenes del cliente con id customerId que estén entre las fechas**from** y **to**. | **Long** customerId, 'from' **Date ('dd/MM/yyyy')**, 'to' **Date ('dd/MM/yyyy')** | **List**<**Orden**> |
-| `/persona/{personaId}/` | **GET** | Retorna el recurso de persona específicado por el id| **Long** | **DataPOJO** |
-| `/persona/` | **POST** | Guarda la información de un juego nuevo para un paciente registrado. | **TextPlainValue** | |
+| `/customer/{customerId}/orden?from=@from&to=@to` | **GET** | Retorna las ordenes del cliente con id customerId que estén entre las fechas**from** y **to**. | **Long** customerId, '@from' **Date ('dd/MM/yyyy')**, '@to' **Date ('dd/MM/yyyy')** | **List**<**Orden**> |
+| `/customer/{customerId}/` | **GET** | Retorna el recurso de cliente específicado por el id| **Long** | **Customer** |
+| `/customer/{customerId}/orden/details` | **GET** | Retorna los detalles de orden para un cliente espedificado por el id. | **Long** | **List**<**OrdenDetail**> |
 
 
 ### Parametros de URL
 
 | Nombre | Tipo | Descripción |
 | :----- | :--- | :---------- |
-| *personaId* | **Long**| Número de identificación de la persona o paciente. |
+| *customerId* | **Long**| Número de identificación del cliente. |
 
 ### Forma de datos
 
