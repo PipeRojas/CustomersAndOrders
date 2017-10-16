@@ -1,0 +1,44 @@
+<div ng-include="'templates/newOrderTemplate.html'"></div>
+<div ng-controller="newOrderViewCtrl" class="container" id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <label>Filtrar por: </label>
+            <input type="text" ng-model="busqueda">
+            <br><br>
+            <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                <thead>
+                <tr>
+                    <th>ID de Producto</th>
+                    <th>Nombre de Producto</th>
+                    <th>Valor de Producto</th>
+                    <th>Agregar a Orden</th>
+                    <th>Cantidad</th>
+                    <th>Info. Extra</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="p in availableProducts | filter: busqueda" >
+                    <td>{{p.product_id}}</td>
+                    <td>{{p.name}}</td>
+                    <td>{{p.price | currency}}</td>
+                    <td><input ng-disabled="!p.addToCart&&disableProducts" ng-click="p.addToCart=!p.addToCart; noMoreThan5Products()" type="checkbox" style="text-align:center;"></td>
+                    <td><input ng-model="p.quantity" ng-disabled="!p.addToCart" ng-click="noMoreThan5Products()" type="number" value="1" min="1" max="5" onkeydown="return false"></td>
+                    <td><input ng-model="p.product_description" ng-disabled="!p.addToCart" type="text" value="Información Extra"></td>
+                </tr>
+                </tbody>
+            </table>
+            <div ng-show="productUnitQuantityLimit" class="alert alert-info">
+                No puede agregar más de 5 unidades por producto.
+            </div>
+            <div ng-show="disableProducts" class="alert alert-warning">
+                No puede agregar más de 5 productos a la orden.
+            </div>
+            <br>
+            <div ng-show="productsQuantity>0">
+                <label>Dirección de Entrega: </label>
+                <input ng-model="deliveryAddress" type="text">
+            </div>
+            <button ng-show="productsQuantity>0&&deliveryAddress" ng-click="saveOrder()">Enviar Orden</button>
+        </div>
+    </div>
+</div>

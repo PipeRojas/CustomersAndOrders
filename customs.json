@@ -1,0 +1,8 @@
+{
+    "elements": {},
+    "attributes": {
+        "app-version": {
+            "context": "span"
+        }
+    }
+}
