@@ -36,51 +36,50 @@ Este se puede usar así:
 
 ### Forma de datos
 
-#### Person
+#### Customer
 
 	{	
-		"id":Long,
+		"customer_id":Long,
 		"name":String,
-		"password":String,
-		"role":String,
-		"edad":Integer,
-		"avancesJuegosCalculos":List<AvanceJuegoCalculos>,
-		"avancesJuegosImagenes":List<AvanceJuegoImagenes>,
-		"diagnosticos":List<Diagnostico>,
+		"email":String,
+		"ordens":List<Orden>,
+		"customer_available_products":Set<Product>,
 	}
 
-#### AvanceJuegoCalculos
+#### Orden
   
   	{
-		"id":Long,
-		"tiempoSegundos":String,
-		"numeroPreguntasIntentos":String,
-		"numeroPreguntasAciertos":String,
-		"PorcentajeSumasResueltas":Integer,
-		"PorcentajeRestasResueltas":Integer,
-		"PorcentajeMultiplicacionesResueltas":Integer,
-		"PorcentajeDivisionesResueltas":Integer,
-		"nivelMaximoAlcanzado:String,
-		"date":Date
+		"orden_id":Integer,
+		"delivery_address":String,
+		"customer_id":Long,
+		"date":Date,
+		"customer":Customer,
+		"orden_detail":Set<OrdenDetail>
   	}
 
-#### AvanceJuegoImagenes
+#### OrdenDetail
 
 	{
-		"id":Long,
-		"tiempoSegundos":String,
-		"numeroPreguntasIntentos":String,
-		"numeroPreguntasAciertos":String,
-		"date":Date
+		"pk":OrdenDetailId,
+		"quantity":Integer,
+		"product_description":String
 	}
 
-#### Diagnostico
+#### OrdenDetailId
 
   	{
-		"id":Long,
-		"title":String,
-		"descripcion":String,
-		"date":Date,
+		"orden":Orden,
+		"product":Product
   	}
+    
+#### Product
+
+    {
+      "product_id":Integer,
+      "name":String,
+      "price":Integer,
+      "availableForCostumers": List<Customer>,
+      "orden_detail": Set<OrdenDetail>
+    }
 
 _______
