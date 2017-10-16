@@ -24,9 +24,9 @@ Este se puede usar así:
 | `/customer/{customerId}/orden` | **POST** | Guarda una nueva orden para el cliente con id customerId. | **Long** customerId | **Orden** |
 | `/customer/{customerId}/orden/details` | **POST** | Guarda los detalles de una orden | **Long** customerId | **List**<**OrdenDetail**> |
 | `/customer/{customerId}/orden?from=@from&to=@to` | **GET** | Retorna las ordenes del cliente con id customerId que estén entre las fechas**from** y **to**. | **Long** customerId, '@from' **Date ('dd/MM/yyyy')**, '@to' **Date ('dd/MM/yyyy')** | **List**<**Orden**> |
-| `/customer/{customerId}/` | **GET** | Retorna el recurso de cliente específicado por el id| **Long** | **Customer** |
-| `/customer/{customerId}/orden/details` | **GET** | Retorna los detalles de orden para un cliente espedificado por el id. | **Long** | **List**<**OrdenDetail**> |
-| `/orden/{ordenId}/detail` | **GET** | Retorna los detalles de orden para una orden espedificada por el id. | **Long** | **List**<**OrdenDetail**> |
+| `/customer/{customerId}/` | **GET** | Retorna el recurso de cliente especificado por el id| **Long** | **Customer** |
+| `/customer/{customerId}/orden/details` | **GET** | Retorna los detalles de orden para un cliente especificado por el id. | **Long** | **List**<**OrdenDetail**> |
+| `/orden/{ordenId}/detail` | **GET** | Retorna los detalles de orden para una orden especificada por el id. | **Integer** | **List**<**OrdenDetail**> |
 
 
 ### Parametros de URL
@@ -34,7 +34,7 @@ Este se puede usar así:
 | Nombre | Tipo | Descripción |
 | :----- | :--- | :---------- |
 | *customerId* | **Long**| Número de identificación del cliente. |
-| *ordenId* | **Long**| Número de identificación de orden. |
+| *ordenId* | **Integer**| Número de identificación de orden. |
 
 ### Forma de datos
 
